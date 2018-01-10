@@ -1,14 +1,25 @@
-# Binaries for programs and plugins
-*.exe
-*.dll
-*.so
-*.dylib
+.DS_Store
+.blobs/
+blobs/
+.dev_builds/
+dev_releases/
+config/dev.yml
+config/private.yml
+/*.yml
+.final_builds/jobs/**/*.tgz
+.final_builds/packages/**/*.tgz
+releases/*.tgz
+releases/**/*.tgz
+dev_releases
+.blobs
+blobs
+.dev_builds
+/bin/
+/pkg/
 
-# Test binary, build with `go test -c`
-*.test
+# gosub and friends
+src/github.com/vito/gosub
+src/github.com/codegangsta/cli
 
-# Output of the go coverage tool, specifically when used with LiteIDE
-*.out
-
-# Project-local glide cache, RE: https://github.com/Masterminds/glide/issues/736
-.glide/
+tags
+.tags
