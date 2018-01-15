@@ -47,7 +47,8 @@ bosh -e <your-env-alias> upload-release
          -o operations/cube-bosh-operations.yml \
          --vars-store <path-to-cf-deployment>/deployment-vars.yml \
          --var=k8s_flatten_cluster_config="$(kubectl config view --flatten=true)" \
-         -v system_domain=bosh-lite.com
+         -v system_domain=bosh-lite.com \
+         -v cc_api=https://api.bosh-lite.com
     ```
     The above modification, will add a new VM(`cube`) to the deployment, and will use your current **Minikube** config file to populate the `properties.cube_sync.config` of your manifest.
 
@@ -65,6 +66,8 @@ bosh -e <your-env-alias> upload-release
 
 ## TODO
 - [ ] Add a new release job, for the OPI registry.
+- [ ] All release jobs(`registry` and `sync` ) should fail in a more explicit way.
+- [ ] The `rootfs.tar` path location for the `registry` job, needs to be configurable.
 
 
 ## Contributing
