@@ -15,15 +15,6 @@ _Note_: In all examples, we refer to `bosh` as an alias to `bosh2` CLI.<br />
 1. Deploy and run a BOSH director. For example, refer to [Stark and Wayne's tutorial](http://www.starkandwayne.com/blog/bosh-lite-on-virtualbox-with-bosh2/) on how set-up such a BOSH Lite v2 environment.
 1. Run Cloud Foundry on your BOSH Lite environment using the [cf-deployment](https://github.com/cloudfoundry/cf-deployment). Again, you can refer to another [Stark and Wayne's tutorial](https://www.starkandwayne.com/blog/running-cloud-foundry-locally-on-bosh-lite-with-bosh2/).
 
-## Build
-Create the `cube` release from source and upload it to BOSH director.
-```sh
-bosh sync-blobs
-git submodule update --init --recursive
-bosh create-release
-bosh -e <your-env-alias> upload-release
-```
-
 ## Deploying
 1. Target your API and push an [app](https://github.com/cloudfoundry/cf-acceptance-tests/tree/master/assets/dora).
     ```
@@ -41,8 +32,13 @@ bosh -e <your-env-alias> upload-release
     cf push test-app-name
     ```
 1. Modify and deploy your `cf-deployment` using the provided [BOSH operations file](./operations/cube-bosh-operations.yml):
-    - **Deploy** with an uploaded release
+    - **Build** your release and **deploy**
       ```
+      bosh sync-blobs
+      git submodule update --init --recursive
+      bosh create-release
+      bosh -e <your-env-alias> upload-release
+
       bosh -e <your-env-alias> -d cf deploy <path-to-cf-deployment>/cf-deployment.yml \
            -o <path-to-cf-deployment>/operations/bosh-lite.yml \
            -o <path-to-cube-release>/operations/cube-bosh-operations.yml \
