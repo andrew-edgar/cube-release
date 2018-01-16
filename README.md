@@ -40,6 +40,7 @@ _Note_: In all examples, we refer to `bosh` as an alias to `bosh2` CLI.<br />
       bosh -e <your-env-alias> upload-release
 
       bosh -e <your-env-alias> -d cf deploy <path-to-cf-deployment>/cf-deployment.yml \
+           -o <path-to-cf-deployment>/operations/experimental/enable-bpm.yml \
            -o <path-to-cf-deployment>/operations/bosh-lite.yml \
            -o <path-to-cube-release>/operations/cube-bosh-operations.yml \
            --vars-store <path-to-cf-deployment>/deployment-vars.yml \
@@ -51,6 +52,7 @@ _Note_: In all examples, we refer to `bosh` as an alias to `bosh2` CLI.<br />
     - Or **Build and deploy** with one command as a dev release
       ```
       bosh -e <your-env-alias> -d cf deploy <path-to-cf-deployment>/cf-deployment.yml \
+           -o <path-to-cf-deployment>/operations/experimental/enable-bpm.yml \
            -o <path-to-cf-deployment>/operations/bosh-lite.yml \
            -o <path-to-cube-release>/operations/cube-bosh-operations.yml \
            --vars-store <path-to-cf-deployment>/deployment-vars.yml \
