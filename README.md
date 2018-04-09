@@ -16,6 +16,16 @@ _Note_: In all examples, we refer to `bosh` as an alias to `bosh2` CLI.<br />
 1. Run Cloud Foundry on your BOSH Lite environment using the [cf-deployment](https://github.com/cloudfoundry/cf-deployment). Again, you can refer to another [Stark and Wayne's tutorial](https://www.starkandwayne.com/blog/running-cloud-foundry-locally-on-bosh-lite-with-bosh2/).
 
 ## Deploying
+
+1. Create the `cubefs.tar` and add it to `blobs`
+   
+   ```
+   $ git submodule update --init --recursive
+   $ scripts/buildfs.sh
+   ```
+
+   The `scripts/buildfs.sh` script will create the `cubefs.tar` and add it to `blobs`. 
+
 1. Target your API and push an [app](https://github.com/cloudfoundry/cf-acceptance-tests/tree/master/assets/dora).
     ```
     cf login -a https://api.bosh-lite.com \
@@ -35,7 +45,6 @@ _Note_: In all examples, we refer to `bosh` as an alias to `bosh2` CLI.<br />
     - **Build** your release and **deploy**
       ```
       bosh sync-blobs
-      git submodule update --init --recursive
       bosh create-release
       bosh -e <your-env-alias> upload-release
 
@@ -66,6 +75,13 @@ _Note_: In all examples, we refer to `bosh` as an alias to `bosh2` CLI.<br />
 
 1. In order to see if a droplet migration to the cluster was successful, you can run  `kubectl get pods` to double check.
 
+1. Minikube config
+
+When starting minikube it is imporatant to start minikube in the same network as Bosh-Lite (CF) and add the cube-registry as insecure docker registry:
+
+```
+$ minikube start --host-only-cidr 192.168.50.1/24 --insecure-registry="<bosh-cube-ip>:8080"
+```
 
 ## Properties
 | Path | Description |
