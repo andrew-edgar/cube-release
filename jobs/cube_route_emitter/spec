@@ -1,0 +1,21 @@
+---
+name: cube_route_emitter
+
+templates:
+  bmp.yml.erb: config/bpm.yml
+  kube_config.erb: config/kube.yml
+
+packages:
+  - cube
+
+properties:
+  bpm.enabled:
+    description: "Enable Bosh Process Manager"
+    default: false
+
+  cube_route_emitter.ingress_endpoint:
+    description: "ingress endpoint"
+
+  cube_route_emitter.config:
+    description: "full kubernetes config"
+

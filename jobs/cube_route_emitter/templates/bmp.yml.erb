@@ -1,0 +1,15 @@
+---
+processes:
+  - name: cube_route_emitter # same as BOSH-job name means `-p <process>` is not needed
+    executable: /var/vcap/packages/cube/bin/cube
+    args:
+    - route
+    - --kube-config
+    - "/var/vcap/jobs/cube_route_emitter/config/kube.yml"
+    - --ingress_endpoint
+    - <%= p('cube_route_emitter.ingress_endpoint') %>
+    limits:
+      memory: 3G
+      processes: 10
+      open_files: 100000
+    ephemeral_disk: true
