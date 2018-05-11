@@ -38,6 +38,8 @@ properties:
   cube_sync.kube_namespace:
     default: "default"
     description: "Kubernetes namespace where to run deployments and tasks"
+  cube_sync.kube_endpoint:
+    description: "Kubernetes endpoint used when creating an Ingress"
   cube_sync.skipSslValidation:
     default: false
     description: "True to continue with an insecure target"

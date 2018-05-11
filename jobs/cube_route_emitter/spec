@@ -13,9 +13,11 @@ properties:
     description: "Enable Bosh Process Manager"
     default: false
 
-  cube_route_emitter.ingress_endpoint:
-    description: "ingress endpoint"
-
   cube_route_emitter.config:
     description: "full kubernetes config"
 
+  cube_route_emitter.nats_password:
+    description: "password for the NATS messaging system"
+
+  cube_route_emitter.nats_ip:
+    description: "ip of the NATS messaging system"

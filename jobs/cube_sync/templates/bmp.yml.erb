@@ -22,6 +22,8 @@ processes:
     - <%= p('cube_sync.adminPassword') %>
     - --namespace
     - <%= p('cube_sync.kube_namespace') %>
+    - --kubeEndpoint
+    - <%= p('cube_sync.kube_endpoint') %>
     <% if p("cube_sync.skipSslValidation") %>- --skipSslValidation<% end %>
     limits:
       memory: 3G

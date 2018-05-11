@@ -6,8 +6,12 @@ processes:
     - route
     - --kube-config
     - "/var/vcap/jobs/cube_route_emitter/config/kube.yml"
-    - --ingress_endpoint
-    - <%= p('cube_route_emitter.ingress_endpoint') %>
+    - --namespace
+    - <%= p('cube_route_emitter.namespace') %>
+    - --natsPass
+    - <%= p('cube_route_emitter.nats_password') %>
+    - --natsIP
+    - <%= p('cube_route_emitter.nats_ip') %>
     limits:
       memory: 3G
       processes: 10
